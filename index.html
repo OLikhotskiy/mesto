@@ -30,42 +30,42 @@
     <section class="elements" aria-label="Карточки">
       <article class="element">
         <img class="element__picture" src="./images/Karach.png" alt="Карачаевск">
-        <div class="element-content">
+        <div class="element__content">
           <h2 class="element__title">Карачаевск</h2>
           <button class="element__like" type="button"></button>
         </div>
       </article>
       <article class="element">
         <img class="element__picture" src="./images/Elbrus.png" alt="Эльбрус">
-        <div class="element-content">
+        <div class="element__content">
           <h2 class="element__title">Эльбрус</h2>
           <button class="element__like" type="button"></button>
         </div>
       </article>
       <article class="element">
         <img class="element__picture" src="./images/Dombai.png" alt="Домбай">
-        <div class="element-content">
+        <div class="element__content">
           <h2 class="element__title">Домбай</h2>
           <button class="element__like" type="button"></button>
         </div>
       </article>
       <article class="element">
         <img class="element__picture" src="./images/sochi.jpg" alt="Сочи">
-        <div class="element-content">
+        <div class="element__content">
           <h2 class="element__title">Сочи</h2>
           <button class="element__like" type="button"></button>
         </div>
       </article>
       <article class="element">
         <img class="element__picture" src="./images/baikal.jpg" alt="Байкал">
-        <div class="element-content">
+        <div class="element__content">
           <h2 class="element__title">Байкал</h2>
           <button class="element__like" type="button"></button>
         </div>
       </article>
       <article class="element">
         <img class="element__picture" src="./images/kosa.jpg" alt="Куршская коса">
-        <div class="element-content">
+        <div class="element__content">
           <h2 class="element__title">Куршская коса</h2>
           <button class="element__like" type="button"></button>
         </div>
@@ -80,15 +80,14 @@
       <button class="popup__close" type="button"></button>
       <div class="popup__content">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" action="#" name="popup__form">
-          <input class="popup__input popup__input_name" type="text" name="popup__input_name" required>
-          <input class="popup__input popup__input_about" type="text" name="popup__input_about" required>
+        <form class="popup__form" action="#" name="popupForm">
+          <input class="popup__input popup__input_type_name" type="text" name="popupInputTypeName" required>
+          <input class="popup__input popup__input_type_about" type="text" name="popupInputTypeAbout" required>
           <button class="popup__submit" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
   </section>
-  <script src="./scripts/index.js"></script>
 </body>
-
+<script src="./scripts/index.js"></script>
 </html>
