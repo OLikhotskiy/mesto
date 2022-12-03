@@ -41,8 +41,8 @@
       <div class="popup__content">
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form popup__form_edit" action="#" name="popup-form">
-          <input class="popup__input popup__input_create popup__input_type_name" type="text" name="popup-input-type-name" required>
-          <input class="popup__input popup__input_create popup__input_type_about" type="text" name="popup-input-type-about" required>
+          <input class="popup__input popup__input_type_name" type="text" name="popup-input-type-name" required>
+          <input class="popup__input popup__input_type_about" type="text" name="popup-input-type-about" required>
           <button class="popup__create" type="submit">Сохранить</button>
         </form>
       </div>
@@ -54,25 +54,24 @@
       <div class="popup__content">
         <h2 class="popup__title">Новое место</h2>
         <form class="popup__form popup__form_add" action="#" name="popup-form">
-          <input class="popup__input popup__input_type_add popup__input_type_title" type="text" name="popup-input-type-title" placeholder="Название" required>
-          <input class="popup__input popup__input_type_add popup__input_type_picture" type="text" name="popup-input-type-picture" placeholder="Ссылка на картинку" required>
+          <input class="popup__input" type="text" name="popup-input-type-title" placeholder="Название" required>
+          <input class="popup__input" type="text" name="popup-input-type-picture" placeholder="Ссылка на картинку" required>
           <button class="popup__submit popup__submit_type_add" type="submit">Создать</button>
         </form>
       </div>
     </div>
   </section>
-  <section class="popup popup_image">
+  <section class="popup popup_image" aria-label="Картинки">
     <figure class="popup__image-figure">
       <button class="popup__close popup__close_image" type="button"></button>
-      <img class="popup__big-pic" src=" " alt="Большая картинка">
+      <img class="popup__big-pic" src=" " alt=" ">
       <figcaption class="popup__image-caption"></figcaption>
     </figure>
-    
   </section>
   
   <template id="element-tamplate">
     <article class="element">
-      <img class="element__picture" src="" alt="">
+      <img class="element__picture" src=" " alt=" ">
       <button class="element__trash" type="button"></button>
       <div class="element__content">
         <h2 class="element__title"></h2>
