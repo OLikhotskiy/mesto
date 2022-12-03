@@ -28,94 +28,59 @@
       <button class="profile__add" type="button"></button>
     </section>
     <section class="elements" aria-label="Карточки">
-      <article class="element">
-        <img class="element__picture" src="./images/Karach.png" alt="Карачаевск">
-        <button class="element__trash" type="button"></button>
-        <div class="element__content">
-          <h2 class="element__title">Карачаевск</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </article>
-      <article class="element">
-        <img class="element__picture" src="./images/Elbrus.png" alt="Эльбрус">
-        <button class="element__trash" type="button"></button>
-        <div class="element__content">
-          <h2 class="element__title">Эльбрус</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </article>
-      <article class="element">
-        <img class="element__picture" src="./images/Dombai.png" alt="Домбай">
-        <button class="element__trash" type="button"></button>
-        <div class="element__content">
-          <h2 class="element__title">Домбай</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </article>
-      <article class="element">
-        <img class="element__picture" src="./images/sochi.jpg" alt="Сочи">
-        <button class="element__trash" type="button"></button>
-        <div class="element__content">
-          <h2 class="element__title">Сочи</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </article>
-      <article class="element">
-        <img class="element__picture" src="./images/baikal.jpg" alt="Байкал">
-        <button class="element__trash" type="button"></button>
-        <div class="element__content">
-          <h2 class="element__title">Байкал</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </article>
-      <article class="element">
-        <img class="element__picture" src="./images/kosa.jpg" alt="Куршская коса">
-        <button class="element__trash" type="button"></button>
-        <div class="element__content">
-          <h2 class="element__title">Куршская коса</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </article>
+      
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy;&nbsp;2022 Mesto Russia</p>
   </footer>
-  <section class="popup popup__type_edit">
+
+  <section class="popup popup_edit">
     <div class="popup__container">
-      <button class="popup__close" type="button"></button>
+      <button class="popup__close popup__close_edit" type="button"></button>
       <div class="popup__content">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" action="#" name="popup-form">
-          <input class="popup__input popup__input_type_name" type="text" name="popup-input-type-name" required>
-          <input class="popup__input popup__input_type_about" type="text" name="popup-input-type-about" required>
-          <button class="popup__submit" type="submit">Сохранить</button>
+        <form class="popup__form popup__form_edit" action="#" name="popup-form">
+          <input class="popup__input popup__input_create popup__input_type_name" type="text" name="popup-input-type-name" required>
+          <input class="popup__input popup__input_create popup__input_type_about" type="text" name="popup-input-type-about" required>
+          <button class="popup__create" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
   </section>
-  <section class="popup popup__type_add">
+  <section class="popup popup_add">
     <div class="popup__container">
-      <button class="popup__close" type="button"></button>
+      <button class="popup__close popup__close_add" type="button"></button>
       <div class="popup__content">
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form" action="#" name="popup-form">
-          <input class="popup__input popup__input_type_picture" type="url" name="popup-input-type-picture" placeholder="Название" required>
-          <input class="popup__input popup__input_type_title" type="text" name="popup-input-type-title" placeholder="Ссылка на картинку" required>
-          <button class="popup__submit" type="submit">Создать</button>
+        <form class="popup__form popup__form_add" action="#" name="popup-form">
+          <input class="popup__input popup__input_type_add popup__input_type_title" type="text" name="popup-input-type-title" placeholder="Название" required>
+          <input class="popup__input popup__input_type_add popup__input_type_picture" type="text" name="popup-input-type-picture" placeholder="Ссылка на картинку" required>
+          <button class="popup__submit popup__submit_type_add" type="submit">Создать</button>
         </form>
       </div>
     </div>
   </section>
-  <section class="popup popup__image">
-    <div class="popup__container">
-    <button class="popup__close" type="button"></button>
-    <figure>
+  <section class="popup popup_image">
+    <figure class="popup__image-figure">
+      <button class="popup__close popup__close_image" type="button"></button>
       <img class="popup__big-pic" src=" " alt="Большая картинка">
-      <figcaption class="popup__img-caption"></figcaption>
+      <figcaption class="popup__image-caption"></figcaption>
     </figure>
-    </div>
+    
   </section>
+  
+  <template id="element-tamplate">
+    <article class="element">
+      <img class="element__picture" src="" alt="">
+      <button class="element__trash" type="button"></button>
+      <div class="element__content">
+        <h2 class="element__title"></h2>
+        <button class="element__like" type="button"></button>
+      </div>
+    </article>
+  </template>
+
   <script src="./scripts/index.js"></script>
 </body>
 </html>
