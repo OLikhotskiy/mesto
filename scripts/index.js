@@ -2,9 +2,7 @@ const popupElementEdit = document.querySelector('.popup_edit');
 const popupElementAdd = document.querySelector('.popup_add');
 const popupElementImage = document.querySelector('.popup_image');
 
-const popupCloseButtonElementEdit = document.querySelector('.popup__close_edit');
-const popupCloseButtonElementAdd = document.querySelector('.popup__close_add');
-const popupCloseButtonElementImage = document.querySelector('.popup__close_image');
+const closeButtons = document.querySelectorAll('.popup__close');
 
 const popupFormEdit = popupElementEdit.querySelector('.popup__form_edit');
 const popupInputName = popupFormEdit.querySelector('.popup__input_type_name');
@@ -53,35 +51,19 @@ const initialCards = [
 ]; 
 
 const openPopupEdit = function() {
-    popupElementEdit.classList.add('popup_is-open');
-    popupInputName.value = profileName.textContent;
-    popupInputAbout.value = profileAbout.textContent;
+  popupInputName.value = profileName.textContent;
+  popupInputAbout.value = profileAbout.textContent;
+  openPopup(popupElementEdit);
 };
 
 const openPopupAdd = function() {
-    popupElementAdd.classList.add('popup_is-open');
+  openPopup(popupElementAdd);
 };
 
 const openImageClick = (evt) => {
   popupImage.src = evt.target.currentSrc;
-  popupImageCaption.textContent = evt.target.parentNode.innerText;
-  openPopupImage(popupElementImage);
-}
-
-const openPopupImage = function() {
-  popupElementImage.classList.add('popup_is-open');
-};
-
-const closePopupEdit = function() {
-  popupElementEdit.classList.remove('popup_is-open');
-};
-
-const closePopupAdd = function() {
-    popupElementAdd.classList.remove('popup_is-open');
-};
-
-const closePopupImage = function() {
-  popupElementImage.classList.remove('popup_is-open');
+  popupImageCaption.textContent = popupImage.alt = evt.target.parentNode.innerText;
+  openPopup(popupElementImage);
 };
 
 const handleDeleteCard = (evt) => {
@@ -98,11 +80,11 @@ const renderCard = (contentCard) => {
 
 const createCard = (contentCard) => {
   const defaultCardMassive = cardTemplate.cloneNode(true);
-  const name = defaultCardMassive.querySelector('.element__title');
-  name.textContent = contentCard.name;
   const link = defaultCardMassive.querySelector('.element__picture');
   link.src = contentCard.link;
-  
+  const name = defaultCardMassive.querySelector('.element__title');
+  name.textContent = link.alt = contentCard.name;
+    
   const delButton = defaultCardMassive.querySelector('.element__trash');
   delButton.addEventListener('click', handleDeleteCard);
 
@@ -119,22 +101,32 @@ const handleSubmitAddCardForm = (evt) => {
   evt.preventDefault();
   renderCard({ name: inputTitle.value, link: inputPicture.value });
   evt.target.reset();
-  closePopupAdd();
+  closePopup(popupElementAdd);
 };
 
-function formSubmitHandlerEdit (evt) {
-    evt.preventDefault(); 
-    profileName.textContent = popupInputName.value;
-    profileAbout.textContent = popupInputAbout.value;
-    closePopupEdit();
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
+
+function openPopup(popup) {
+  popup.classList.add('popup_is-open');
+};
+
+function closePopup(popup) {
+  popup.classList.remove('popup_is-open');
+}
+
+function handleEditFormSubmit (evt) {
+  evt.preventDefault(); 
+  profileName.textContent = popupInputName.value;
+  profileAbout.textContent = popupInputAbout.value;
+  closePopup(popupElementEdit);
 };
 
 popupOpenButtonEditElement.addEventListener('click', openPopupEdit);
 popupOpenButtonAddElement.addEventListener('click', openPopupAdd);
-popupCloseButtonElementEdit.addEventListener('click', closePopupEdit);
-popupCloseButtonElementAdd.addEventListener('click', closePopupAdd);
-popupCloseButtonElementImage.addEventListener('click', closePopupImage);
-popupFormEdit.addEventListener('submit', formSubmitHandlerEdit);
+popupFormEdit.addEventListener('submit', handleEditFormSubmit);
 popupFormAdd.addEventListener("submit", handleSubmitAddCardForm);
 
 initialCards.forEach((contentCard) => {
