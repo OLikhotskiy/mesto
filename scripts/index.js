@@ -48,7 +48,7 @@ const initialCards = [
     name: 'Байкал',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
-]; 
+];
 
 const openPopupEdit = function() {
   popupInputName.value = profileName.textContent;
@@ -84,15 +84,15 @@ const createCard = (contentCard) => {
   link.src = contentCard.link;
   const name = defaultCardMassive.querySelector('.element__title');
   name.textContent = link.alt = contentCard.name;
-    
+
   const delButton = defaultCardMassive.querySelector('.element__trash');
   delButton.addEventListener('click', handleDeleteCard);
 
   const likeButton = defaultCardMassive.querySelector('.element__like');
   likeButton.addEventListener('click', handleLikeCard);
 
-  const imgButton = defaultCardMassive.querySelector('.element__picture');
-  imgButton.addEventListener('click', openImageClick);
+  //const imgButton = defaultCardMassive.querySelector('.element__picture');
+  link.addEventListener('click', openImageClick);
 
   return defaultCardMassive;
 };
@@ -118,7 +118,7 @@ function closePopup(popup) {
 }
 
 function handleEditFormSubmit (evt) {
-  evt.preventDefault(); 
+  evt.preventDefault();
   profileName.textContent = popupInputName.value;
   profileAbout.textContent = popupInputAbout.value;
   closePopup(popupElementEdit);
@@ -132,3 +132,42 @@ popupFormAdd.addEventListener("submit", handleSubmitAddCardForm);
 initialCards.forEach((contentCard) => {
   renderCard(contentCard);
 });
+
+
+// const input = document.querySelector('.popup__input_type_name');
+// const error = document.querySelector('#name-error');
+// input.addEventListener('input', (e) => {
+//     //console.log ('!!!!', e);
+//     if(input.value !== 'Привет!') {
+//       error.textContent = 'Ошибка'
+//     } else {
+//       error.textContent = ''
+//     }
+//     input.value;
+// })
+
+
+const forms = Array.from(document.querySelectorAll('.popup__form'));
+//const inputs = Array.from(document.querySelectorAll('.popup__input'));
+
+forms.forEach(form => {
+    const inputs = [...form.querySelectorAll('.popup__input')]
+    
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+    })
+
+  inputs.forEach(input => {
+    input.addEventListener('input', () => {
+     const error = document.querySelector(`#${input.id}-error`); 
+     console.log(input.validity)
+     if (input.validity.valid){
+       error.textContent = ''
+     } else {
+       error.textContent = input.validationMessage
+     }
+  
+     })
+  })
+})
+ 
