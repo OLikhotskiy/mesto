@@ -23,6 +23,8 @@ const popupImageCaption = document.querySelector('.popup__image-caption');
 const popupImage = document.querySelector('.popup__big-pic');
 const cardTemplate = document.querySelector('#element-tamplate').content.querySelector('.element');
 
+const popupArray = Array.from(document.querySelectorAll('.popup'));
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -91,7 +93,6 @@ const createCard = (contentCard) => {
   const likeButton = defaultCardMassive.querySelector('.element__like');
   likeButton.addEventListener('click', handleLikeCard);
 
-  //const imgButton = defaultCardMassive.querySelector('.element__picture');
   link.addEventListener('click', openImageClick);
 
   return defaultCardMassive;
@@ -105,17 +106,34 @@ const handleSubmitAddCardForm = (evt) => {
 };
 
 closeButtons.forEach((button) => {
-  const popup = button.closest('.popup');
-  button.addEventListener('click', () => closePopup(popup));
+  const popupButton = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popupButton));
 });
+
+const closeByEscape = (evt) => {
+  if (evt.key === 'Escape') {
+  const openPopup = document.querySelector('.popup_is-open');
+  closePopup(openPopup);
+  }
+};
 
 function openPopup(popup) {
   popup.classList.add('popup_is-open');
+  document.addEventListener('keyup', closeByEscape);
 };
 
 function closePopup(popup) {
   popup.classList.remove('popup_is-open');
-}
+  document.removeEventListener('keyup', closeByEscape);
+};
+
+popupArray.forEach((overlay) => {
+  overlay.addEventListener('click', (evt) => {
+    if (!evt.target.closest('.popup__container')) {
+      closePopup(evt.target.closest('.popup_is-open'));
+    }
+  })
+});
 
 function handleEditFormSubmit (evt) {
   evt.preventDefault();
@@ -127,47 +145,8 @@ function handleEditFormSubmit (evt) {
 popupOpenButtonEditElement.addEventListener('click', openPopupEdit);
 popupOpenButtonAddElement.addEventListener('click', openPopupAdd);
 popupFormEdit.addEventListener('submit', handleEditFormSubmit);
-popupFormAdd.addEventListener("submit", handleSubmitAddCardForm);
+popupFormAdd.addEventListener('submit', handleSubmitAddCardForm);
 
 initialCards.forEach((contentCard) => {
   renderCard(contentCard);
 });
-
-
-// const input = document.querySelector('.popup__input_type_name');
-// const error = document.querySelector('#name-error');
-// input.addEventListener('input', (e) => {
-//     //console.log ('!!!!', e);
-//     if(input.value !== 'Привет!') {
-//       error.textContent = 'Ошибка'
-//     } else {
-//       error.textContent = ''
-//     }
-//     input.value;
-// })
-
-
-const forms = Array.from(document.querySelectorAll('.popup__form'));
-//const inputs = Array.from(document.querySelectorAll('.popup__input'));
-
-forms.forEach(form => {
-    const inputs = [...form.querySelectorAll('.popup__input')]
-    
-    form.addEventListener('submit', (e) => {
-        e.preventDefault()
-    })
-
-  inputs.forEach(input => {
-    input.addEventListener('input', () => {
-     const error = document.querySelector(`#${input.id}-error`); 
-     console.log(input.validity)
-     if (input.validity.valid){
-       error.textContent = ''
-     } else {
-       error.textContent = input.validationMessage
-     }
-  
-     })
-  })
-})
- 

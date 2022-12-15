@@ -50,7 +50,7 @@
             minlength="2"
             maxlength="40"
             required>
-          <span id="name-error" class="error"></span>
+          <span id="name-error" class="popup__error"></span>
           <input 
             class="popup__input popup__input_type_about" 
             type="text" 
@@ -59,8 +59,8 @@
             minlength="2"
             maxlength="200" 
             required>
-          <span id="about-error" class="error"></span>
-          <button class="popup__create" type="submit">Сохранить</button>
+          <span id="about-error" class="popup__error"></span>
+          <button class="popup__button" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
@@ -72,7 +72,7 @@
         <h2 class="popup__title">Новое место</h2>
         <form class="popup__form popup__form_add" action="#" name="popup-form">
           <input 
-            class="popup__input" 
+            class="popup__input popup__input_type_error" 
             type="text"
             id="title" 
             name="popup-input-type-title" 
@@ -80,15 +80,15 @@
             minlength="2"
             maxlength="30"
             required>
-          <span id="title-error" class="error"></span>
-          <input class="popup__input" 
+          <span id="title-error" class="popup__error"></span>
+          <input class="popup__input popup__input_type_error" 
             type="url" 
             id="picture"
             name="popup-input-type-picture" 
             placeholder="Ссылка на картинку"
             required>
-            <span id="picture-error" class="error"></span>
-          <button class="popup__submit" type="submit">Создать</button>
+            <span id="picture-error" class="popup__error"></span>
+          <button class="popup__button popup__button_disabled" type="submit">Создать</button>
         </form>
       </div>
     </div>
