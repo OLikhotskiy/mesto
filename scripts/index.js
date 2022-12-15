@@ -1,6 +1,10 @@
-const popupElementEdit = document.querySelector('.popup_edit');
-const popupElementAdd = document.querySelector('.popup_add');
-const popupElementImage = document.querySelector('.popup_image');
+import {configValidation, disableSubmitButton} from './validate.js';
+//import {disableSubmitButton} from './validate.js';
+
+
+const popupElementEdit = document.querySelector('.popup_type_profile-edit');
+const popupElementAdd = document.querySelector('.popup_type_add');
+const popupElementImage = document.querySelector('.popup_type_image');
 
 const closeButtons = document.querySelectorAll('.popup__close');
 
@@ -24,6 +28,8 @@ const popupImage = document.querySelector('.popup__big-pic');
 const cardTemplate = document.querySelector('#element-tamplate').content.querySelector('.element');
 
 const popupArray = Array.from(document.querySelectorAll('.popup'));
+
+const popupAddButton = popupElementAdd.querySelector(configValidation.submitButtonSelector);
 
 const initialCards = [
   {
@@ -53,13 +59,16 @@ const initialCards = [
 ];
 
 const openPopupEdit = function() {
+  
   popupInputName.value = profileName.textContent;
   popupInputAbout.value = profileAbout.textContent;
   openPopup(popupElementEdit);
 };
 
 const openPopupAdd = function() {
+  disableSubmitButton(popupAddButton);
   openPopup(popupElementAdd);
+  popupFormAdd.reset()
 };
 
 const openImageClick = (evt) => {
@@ -129,7 +138,7 @@ function closePopup(popup) {
 
 popupArray.forEach((overlay) => {
   overlay.addEventListener('click', (evt) => {
-    if (!evt.target.closest('.popup__container')) {
+    if (!evt.target.closest('#popup__container')) {
       closePopup(evt.target.closest('.popup_is-open'));
     }
   })

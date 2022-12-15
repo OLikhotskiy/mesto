@@ -36,12 +36,12 @@
     <p class="footer__copyright">&copy;&nbsp;2022 Mesto Russia</p>
   </footer>
 
-  <section class="popup popup_edit">
-    <div class="popup__container">
+  <section class="popup popup_type_profile-edit">
+    <div class="popup__container" id="popup__container">
       <button class="popup__close" type="button"></button>
       <div class="popup__content">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form popup__form_edit" action="#" name="popup-form">
+        <form class="popup__form popup__form_edit" action="#" name="popup-form" novalidate>
           <input 
             class="popup__input popup__input_type_name" 
             type="text"
@@ -65,14 +65,14 @@
       </div>
     </div>
   </section>
-  <section class="popup popup_add">
-    <div class="popup__container">
+  <section class="popup popup_type_add">
+    <div class="popup__container" id="popup__container">
       <button class="popup__close" type="button"></button>
       <div class="popup__content">
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form popup__form_add" action="#" name="popup-form">
+        <form class="popup__form popup__form_add" action="#" name="popup-form" novalidate>
           <input 
-            class="popup__input popup__input_type_error" 
+            class="popup__input" 
             type="text"
             id="title" 
             name="popup-input-type-title" 
@@ -81,20 +81,20 @@
             maxlength="30"
             required>
           <span id="title-error" class="popup__error"></span>
-          <input class="popup__input popup__input_type_error" 
+          <input class="popup__input" 
             type="url" 
             id="picture"
             name="popup-input-type-picture" 
             placeholder="Ссылка на картинку"
             required>
             <span id="picture-error" class="popup__error"></span>
-          <button class="popup__button popup__button_disabled" type="submit">Создать</button>
+          <button class="popup__button" type="submit">Создать</button>
         </form>
       </div>
     </div>
   </section>
-  <section class="popup popup_image" aria-label="Картинки">
-    <figure class="popup__image-figure">
+  <section class="popup popup_type_image" aria-label="Картинки">
+    <figure class="popup__image-figure" id="popup__container">
       <button class="popup__close" type="button"></button>
       <img class="popup__big-pic" src="#" alt=" ">
       <figcaption class="popup__image-caption"></figcaption>
@@ -112,8 +112,8 @@
     </article>
   </template>
 
-  <script src="./scripts/index.js"></script>
-  <script src="./scripts/validate.js"></script>
+  <script type="module" src="./scripts/index.js"></script>
+  <script type="module" src="./scripts/validate.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,11 @@
+const configValidation = {formSelector: '.popup__form',
+inputSelector: '.popup__input',
+submitButtonSelector: '.popup__button',
+inactiveButtonClass: 'popup__button_disabled',
+inputErrorClass: 'popup__input_type_error',
+errorClass: 'popup__error_visible'
+}
+
 const forms = Array.from(document.querySelectorAll('.popup__form'));
 
 const checkInputValidity = (input, config) => {
@@ -14,16 +22,14 @@ const checkInputValidity = (input, config) => {
     };
 };
 
-const disableButton = (inputs, button, config) => {
+const disableButton = (inputs, button) => { 
   const isFormValid = inputs.every(input => input.validity.valid);
      
-     if (isFormValid) {
-       button.disabled = '';
-       button.classList.remove(config.inactiveButtonClass);
-     } else {
-       button.disabled = 'disabled';
-       button.classList.add(config.inactiveButtonClass);
-     };
+    if (isFormValid) {
+      enableSubmitButton(button);
+    } else {
+      disableSubmitButton(button);
+    };
 };
 
 const enableValidation = (config) => {
@@ -40,17 +46,24 @@ const enableValidation = (config) => {
     inputs.forEach(input => {
       input.addEventListener('input', () => {
       checkInputValidity(input, config);
-      disableButton(inputs, button, config);
+      disableButton(inputs, button);
       });
     });
 });
 };
 
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-});
+enableValidation(configValidation);
+
+function disableSubmitButton (button) {
+  button.classList.add(configValidation.inactiveButtonClass);
+  button.disabled = true;
+};
+
+function enableSubmitButton (button) {
+  button.classList.remove(configValidation.inactiveButtonClass);
+  button.disabled = false;
+};
+
+export {disableSubmitButton};
+export {configValidation};
+//export {disableButton};
