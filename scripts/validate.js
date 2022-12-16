@@ -66,4 +66,3 @@ function enableSubmitButton (button) {
 
 export {disableSubmitButton};
 export {configValidation};
-//export {disableButton};
