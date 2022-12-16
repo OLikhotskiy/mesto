@@ -1,12 +1,11 @@
+import {initialCards} from './cards.js';
 import {configValidation, disableSubmitButton} from './validate.js';
-//import {disableSubmitButton} from './validate.js';
-
 
 const popupElementEdit = document.querySelector('.popup_type_profile-edit');
 const popupElementAdd = document.querySelector('.popup_type_add');
 const popupElementImage = document.querySelector('.popup_type_image');
 
-const closeButtons = document.querySelectorAll('.popup__close');
+const popupCrossButtons = document.querySelectorAll('.popup__close');
 
 const popupFormEdit = popupElementEdit.querySelector('.popup__form_edit');
 const popupInputName = popupFormEdit.querySelector('.popup__input_type_name');
@@ -31,35 +30,8 @@ const popupArray = Array.from(document.querySelectorAll('.popup'));
 
 const popupAddButton = popupElementAdd.querySelector(configValidation.submitButtonSelector);
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 const openPopupEdit = function() {
-  
   popupInputName.value = profileName.textContent;
   popupInputAbout.value = profileAbout.textContent;
   openPopup(popupElementEdit);
@@ -72,8 +44,8 @@ const openPopupAdd = function() {
 };
 
 const openImageClick = (evt) => {
-  popupImage.src = evt.target.currentSrc;
-  popupImageCaption.textContent = popupImage.alt = evt.target.parentNode.innerText;
+  popupImage.src = evt.target.src;
+  popupImageCaption.textContent = popupImage.alt = evt.target.closest('.element__picture').alt;
   openPopup(popupElementImage);
 };
 
@@ -114,7 +86,7 @@ const handleSubmitAddCardForm = (evt) => {
   closePopup(popupElementAdd);
 };
 
-closeButtons.forEach((button) => {
+popupCrossButtons.forEach((button) => {
   const popupButton = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popupButton));
 });
