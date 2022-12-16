@@ -110,7 +110,7 @@ function closePopup(popup) {
 
 popupArray.forEach((overlay) => {
   overlay.addEventListener('click', (evt) => {
-    if (!evt.target.closest('#popup__container')) {
+    if (!evt.target.closest('.popup__overlay')) {
       closePopup(evt.target.closest('.popup_is-open'));
     }
   })
