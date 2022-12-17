@@ -22,13 +22,13 @@ const checkInputValidity = (input, config) => {
     };
 };
 
-const disableButton = (inputs, button) => { 
+const disableButton = (inputs, button, config) => { 
   const isFormValid = inputs.every(input => input.validity.valid);
      
     if (isFormValid) {
-      enableSubmitButton(button);
+      enableSubmitButton(button, config);
     } else {
-      disableSubmitButton(button);
+      disableSubmitButton(button, config);
     };
 };
 
@@ -46,7 +46,7 @@ const enableValidation = (config) => {
     inputs.forEach(input => {
       input.addEventListener('input', () => {
       checkInputValidity(input, config);
-      disableButton(inputs, button);
+      disableButton(inputs, button, config);
       });
     });
 });
@@ -54,13 +54,13 @@ const enableValidation = (config) => {
 
 enableValidation(configValidation);
 
-function disableSubmitButton (button) {
-  button.classList.add(configValidation.inactiveButtonClass);
+function disableSubmitButton (button, config) {
+  button.classList.add(config.inactiveButtonClass);
   button.disabled = true;
 };
 
-function enableSubmitButton (button) {
-  button.classList.remove(configValidation.inactiveButtonClass);
+function enableSubmitButton (button, config) {
+  button.classList.remove(config.inactiveButtonClass);
   button.disabled = false;
 };
 

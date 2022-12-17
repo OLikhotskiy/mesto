@@ -38,7 +38,7 @@ const openPopupEdit = function() {
 };
 
 const openPopupAdd = function() {
-  disableSubmitButton(popupAddButton);
+  disableSubmitButton(popupAddButton, configValidation);
   openPopup(popupElementAdd);
   popupFormAdd.reset()
 };
