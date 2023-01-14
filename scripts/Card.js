@@ -1,6 +1,6 @@
-import {openPopup, popupElementImage} from './index.js';
+import { openPopup, popupElementImage } from './index.js';
 
-export class Card{
+export class Card {
   static selectors = {
     pic: '.element__picture',
     title: '.element__title',
@@ -12,18 +12,18 @@ export class Card{
     big: '.popup__big-pic',
   }
 
-  constructor(name, link, templateSelector){
+  constructor(name, link, templateSelector) {
     this._name = name;
     this._link = link;
     this._templateSelector = templateSelector;
   };
 
-  _getTemplate(){
+  _getTemplate() {
     const cardElement = document.querySelector(this._templateSelector).content.querySelector(Card.selectors.element).cloneNode(true);
     return cardElement;
   };
 
-  generateCard(){
+  generateCard() {
     this._element = this._getTemplate();
     this._element.querySelector(Card.selectors.pic).src = this._link;
     this._element.querySelector(Card.selectors.pic).alt = this._name;
@@ -32,22 +32,22 @@ export class Card{
     return this._element;
   };
 
-  _likeCard(){
+  _likeCard() {
     this._element.querySelector(Card.selectors.like).classList.toggle(Card.selectors.likeActive);
   };
 
-  _deleteCard(){
+  _deleteCard() {
     this._element.querySelector(Card.selectors.trash).closest(Card.selectors.element).remove();
   };
 
-  _openBigCard(){
+  _openBigCard() {
     openPopup(popupElementImage);
     popupElementImage.querySelector(Card.selectors.caption).textContent = this._name;
     popupElementImage.querySelector(Card.selectors.big).src = this._link;
     popupElementImage.querySelector(Card.selectors.big).alt = this._name;
   };
 
-  _hangEventListeners(){
+  _hangEventListeners() {
     this._element.querySelector(Card.selectors.like).addEventListener('click', () => {
       this._likeCard();
     });

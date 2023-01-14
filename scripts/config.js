@@ -1,10 +1,10 @@
-export const settings = {
-  formSelector: 'form',
+export const configValidation = {
+  formSelector: '.popup__form',
   inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button-submit',
-  inactiveButtonClass: 'popup__button-submit_blocked',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active',
+  errorClass: 'popup__error_visible'
 };
 
 export const initialCards = [
