@@ -1,5 +1,3 @@
-import { openPopup, popupElementImage } from './index.js';
-
 export class Card {
   static selectors = {
     pic: '.element__picture',
@@ -12,10 +10,11 @@ export class Card {
     big: '.popup__big-pic',
   }
 
-  constructor(name, link, templateSelector) {
+  constructor(name, link, templateSelector, openBigCard) {
     this._name = name;
     this._link = link;
     this._templateSelector = templateSelector;
+    this._openBigCard = openBigCard;
   };
 
   _getTemplate() {
@@ -25,37 +24,35 @@ export class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    this._element.querySelector(Card.selectors.pic).src = this._link;
-    this._element.querySelector(Card.selectors.pic).alt = this._name;
-    this._element.querySelector(Card.selectors.title).textContent = this._name;
+    this._elementPic = this._element.querySelector(Card.selectors.pic);
+    this._elementLike = this._element.querySelector(Card.selectors.like);
+    this._elementTitle = this._element.querySelector(Card.selectors.title);
+    this._elementTrash = this._element.querySelector(Card.selectors.trash);
+
+    this._elementPic.src = this._link;
+    this._elementPic.alt = this._name;
+    this._elementTitle.textContent = this._name;
+
     this._hangEventListeners();
+
     return this._element;
   };
 
   _likeCard() {
-    this._element.querySelector(Card.selectors.like).classList.toggle(Card.selectors.likeActive);
+    this._elementLike.classList.toggle(Card.selectors.likeActive);
   };
 
   _deleteCard() {
-    this._element.querySelector(Card.selectors.trash).closest(Card.selectors.element).remove();
-  };
-
-  _openBigCard() {
-    openPopup(popupElementImage);
-    popupElementImage.querySelector(Card.selectors.caption).textContent = this._name;
-    popupElementImage.querySelector(Card.selectors.big).src = this._link;
-    popupElementImage.querySelector(Card.selectors.big).alt = this._name;
+    this._element.remove();
   };
 
   _hangEventListeners() {
-    this._element.querySelector(Card.selectors.like).addEventListener('click', () => {
+    this._elementLike.addEventListener('click', () => {
       this._likeCard();
     });
-    this._element.querySelector(Card.selectors.trash).addEventListener('click', () => {
+    this._elementTrash.addEventListener('click', () => {
       this._deleteCard();
     });
-    this._element.querySelector(Card.selectors.pic).addEventListener('click', () => {
-      this._openBigCard();
-    });
+    this._elementPic.addEventListener('click', () => this._openBigCard(this._name, this._link));
   };
 }

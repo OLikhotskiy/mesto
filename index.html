@@ -21,11 +21,11 @@
       <div class="profile__info">
         <div class="profile__content">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit" type="button"></button>
+          <button aria-label="Edit" class="profile__edit" type="button"></button>
         </div>
         <p class="profile__about">Исследователь океана</p>
       </div>
-      <button class="profile__add" type="button"></button>
+      <button aria-label="Add" class="profile__add" type="button"></button>
     </section>
     <section class="elements" aria-label="Карточки">
 
@@ -38,53 +38,53 @@
 
   <section class="popup popup_type_profile-edit">
     <div class="popup__container popup__overlay">
-      <button class="popup__close" type="button"></button>
+      <button aria-label="Close" class="popup__close" type="button"></button>
       <div class="popup__content">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form popup__form_edit" action="#" name="popup-form" novalidate>
+        <form class="popup__form popup__form_edit" name="popup-form" novalidate>
           <input class="popup__input popup__input_type_name" type="text" id="name" name="popup-input-type-name"
             minlength="2" maxlength="40" required>
           <span id="name-error" class="popup__error"></span>
           <input class="popup__input popup__input_type_about" type="text" id="about" name="popup-input-type-about"
             minlength="2" maxlength="200" required>
           <span id="about-error" class="popup__error"></span>
-          <button class="popup__button" type="submit">Сохранить</button>
+          <button aria-label="Submit" class="popup__button" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
   </section>
   <section class="popup popup_type_add">
     <div class="popup__container popup__overlay">
-      <button class="popup__close" type="button"></button>
+      <button aria-label="Close" class="popup__close" type="button"></button>
       <div class="popup__content">
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form popup__form_add" action="#" name="popup-form" novalidate>
+        <form class="popup__form popup__form_add" name="popup-form" novalidate>
           <input class="popup__input" type="text" id="title" name="popup-input-type-title" placeholder="Название"
             minlength="2" maxlength="30" required>
           <span id="title-error" class="popup__error"></span>
           <input class="popup__input" type="url" id="picture" name="popup-input-type-picture"
             placeholder="Ссылка на картинку" required>
           <span id="picture-error" class="popup__error"></span>
-          <button class="popup__button" type="submit">Создать</button>
+          <button aria-label="Submit" class="popup__button" type="submit">Создать</button>
         </form>
       </div>
     </div>
   </section>
   <section class="popup popup_type_image" aria-label="Картинки">
     <figure class="popup__image-figure popup__overlay">
-      <button class="popup__close" type="button"></button>
+      <button aria-label="Close" class="popup__close" type="button"></button>
       <img class="popup__big-pic" src="#" alt=" ">
       <figcaption class="popup__image-caption"></figcaption>
     </figure>
   </section>
 
-  <template id="element-tamplate">
+  <template id="element-template">
     <article class="element">
       <img class="element__picture" src="#" alt=" ">
-      <button class="element__trash" type="button"></button>
+      <button aria-label="Delete" class="element__trash" type="button"></button>
       <div class="element__content">
         <h2 class="element__title"></h2>
-        <button class="element__like" type="button"></button>
+        <button aria-label="Like" class="element__like" type="button"></button>
       </div>
     </article>
   </template>
