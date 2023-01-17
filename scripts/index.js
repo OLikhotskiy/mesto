@@ -29,11 +29,9 @@ const cardElements = document.querySelector('.elements');
 const popupImageCaption = document.querySelector('.popup__image-caption');
 const popupImage = document.querySelector('.popup__big-pic');
 
-export function openPopup(popup) {
+function openPopup(popup) {
   popup.classList.add('popup_is-open');
   document.addEventListener('keyup', closeByEscape);
-  popupProfileValidation.resetValidation();
-  popupAddCardValidation.resetValidation();
 };
 
 function closePopup(popup) {
@@ -60,6 +58,7 @@ const openPopupEdit = function () {
   popupInputName.value = profileName.textContent;
   popupInputAbout.value = profileAbout.textContent;
   openPopup(popupElementEdit);
+  popupProfileValidation.resetValidation();
 };
 
 function handleEditFormSubmit(evt) {
@@ -71,7 +70,8 @@ function handleEditFormSubmit(evt) {
 
 const openPopupAdd = function () {
   openPopup(popupElementAdd);
-  popupFormAdd.reset()
+  popupFormAdd.reset();
+  popupAddCardValidation.resetValidation();
 };
 
 const openBigCard = (name, link) => {
