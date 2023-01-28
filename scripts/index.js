@@ -74,10 +74,10 @@ const openPopupAdd = function () {
   popupAddCardValidation.resetValidation();
 };
 
-const openBigCard = (name, link) => {
-  popupImage.src = link;
-  popupImageCaption.textContent = name;
-  popupImage.alt = name;
+const openBigCard = (name, link) => {//+
+  popupImage.src = link;//+
+  popupImageCaption.textContent = name;//+
+  popupImage.alt = name;//+
   openPopup(popupElementImage);
 };
 
