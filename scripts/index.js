@@ -30,18 +30,18 @@ const popupImageCaption = document.querySelector('.popup__image-caption');
 const popupImage = document.querySelector('.popup__big-pic');
 
 function openPopup(popup) {
-  popup.classList.add('popup_is-open');
-  document.addEventListener('keyup', closeByEscape);
+  popup.classList.add('popup_is-open');//+
+  document.addEventListener('keyup', closeByEscape);//+
 };
 
 function closePopup(popup) {
-  popup.classList.remove('popup_is-open');
-  document.removeEventListener('keyup', closeByEscape);
+  popup.classList.remove('popup_is-open');//+
+  document.removeEventListener('keyup', closeByEscape);//+
 };
 
 const closeByEscape = (evt) => {
   if (evt.key === 'Escape') {
-    const openPopup = document.querySelector('.popup_is-open');
+    const openPopup = document.querySelector('.popup_is-open');//+
     closePopup(openPopup);
   }
 };
