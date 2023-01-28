@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "Данная проектная работа создана для отработки навыков разметки и вёрстки форм, адаптивной вёрстки, организации файлов по БЭМ, а также навыки программирования на JS для создания интерактивных страниц. Данная проректная работа отличается от предыдущих проектный работ тем, что в ней применяются принципы бъектно-ориентированного программирования.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OLikhotskiy/mesto.git"
+  },
+  "author": "OLikhotskiy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OLikhotskiy/mesto/issues"
+  },
+  "homepage": "https://github.com/OLikhotskiy/mesto#readme"
+}
