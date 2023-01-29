@@ -10,11 +10,11 @@ export class Card {
     big: '.popup__big-pic',
   }
 
-  constructor(name, link, templateSelector, openBigCard) {
+  constructor(name, link, templateSelector, handleCardClick) {
     this._name = name;
     this._link = link;
     this._templateSelector = templateSelector;
-    this._openBigCard = openBigCard;
+    this._handleCardClick = handleCardClick;
   };
 
   _getTemplate() {
@@ -53,6 +53,6 @@ export class Card {
     this._elementTrash.addEventListener('click', () => {
       this._deleteCard();
     });
-    this._elementPic.addEventListener('click', () => this._openBigCard(this._name, this._link));
+    this._elementPic.addEventListener('click', () => this._handleCardClick(this._name, this._link));
   };
 }

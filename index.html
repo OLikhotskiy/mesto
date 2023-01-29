@@ -11,7 +11,7 @@
   <title>Место</title>
 </head>
 
-<body class="page">
+<body class="page"> 
   <header class="header">
     <img class="header__logo" src="./images/Logo.svg" alt="Место Россия">
   </header>
@@ -41,11 +41,11 @@
       <button aria-label="Close" class="popup__close" type="button"></button>
       <div class="popup__content">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form popup__form_edit" name="popup-form" novalidate>
-          <input class="popup__input popup__input_type_name" type="text" id="name" name="popup-input-type-name"
+        <form id="form-edit" class="popup__form popup__form_edit" name="popup-form" novalidate>
+          <input class="popup__input popup__input_type_name" type="text" id="name" name="name"
             minlength="2" maxlength="40" required>
           <span id="name-error" class="popup__error"></span>
-          <input class="popup__input popup__input_type_about" type="text" id="about" name="popup-input-type-about"
+          <input class="popup__input popup__input_type_about" type="text" id="about" name="about"
             minlength="2" maxlength="200" required>
           <span id="about-error" class="popup__error"></span>
           <button aria-label="Submit" class="popup__button" type="submit">Сохранить</button>
@@ -58,11 +58,11 @@
       <button aria-label="Close" class="popup__close" type="button"></button>
       <div class="popup__content">
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form popup__form_add" name="popup-form" novalidate>
-          <input class="popup__input" type="text" id="title" name="popup-input-type-title" placeholder="Название"
+        <form id="form-add" class="popup__form popup__form_add" name="popup-form" novalidate>
+          <input class="popup__input" type="text" id="title" name="name" placeholder="Название"
             minlength="2" maxlength="30" required>
           <span id="title-error" class="popup__error"></span>
-          <input class="popup__input" type="url" id="picture" name="popup-input-type-picture"
+          <input class="popup__input" type="url" id="picture" name="link"
             placeholder="Ссылка на картинку" required>
           <span id="picture-error" class="popup__error"></span>
           <button aria-label="Submit" class="popup__button" type="submit">Создать</button>
