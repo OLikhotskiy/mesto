@@ -1,12 +1,17 @@
-import { Popup } from './Popup.js';
+import { Popup } from "./Popup.js";
 
 export class PopupWithImage extends Popup {
-   open(name, link) {
-      const popupImage = this._popup.querySelector('.popup__big-pic');
-      const popupImageCaption = this._popup.querySelector('.popup__image-caption');
-      popupImageCaption.textContent = name;
-      popupImage.alt = name;
-      popupImage.src = link;
-      super.open();
-   }
+  constructor(selectorPopup) {
+    super(selectorPopup);
+    this._popupImage = this._popup.querySelector(".popup__big-pic");
+    this._popupImageCaption = this._popup.querySelector(
+      ".popup__image-caption"
+    );
+  }
+  open(name, link) {
+    this._popupImageCaption.textContent = name;
+    this._popupImage.alt = name;
+    this._popupImage.src = link;
+    super.open();
+  }
 }
