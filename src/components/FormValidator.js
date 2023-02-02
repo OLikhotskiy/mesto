@@ -1,7 +1,7 @@
 export class FormValidator {
   constructor(configValidation, formElement) {
     this._inputSelector = configValidation.inputSelector;
-    this._buttonSubmit = configValidation.submitButtonSelector;
+    this._buttonSubmitSelector = configValidation.submitButtonSelector;
     this._inactiveButtonClass = configValidation.inactiveButtonClass;
     this._inputErrorClass = configValidation.inputErrorClass;
     this._errorClass = configValidation.errorClass;
@@ -9,7 +9,7 @@ export class FormValidator {
     this._inputList = Array.from(
       this._form.querySelectorAll(this._inputSelector)
     );
-    this._submit = this._form.querySelector(this._buttonSubmit);
+    this._buttonSubmit = this._form.querySelector(this._buttonSubmitSelector);
   }
 
   _checkInputValidity = (input) => {
@@ -36,11 +36,11 @@ export class FormValidator {
   toggleSubmitButtonState = () => {
     const isFormValid = this._inputList.every((input) => input.validity.valid);
     if (isFormValid) {
-      this._submit.classList.remove(this._inactiveButtonClass);
-      this._submit.disabled = false;
+      this._buttonSubmit.classList.remove(this._inactiveButtonClass);
+      this._buttonSubmit.disabled = false;
     } else {
-      this._submit.classList.add(this._inactiveButtonClass);
-      this._submit.disabled = true;
+      this._buttonSubmit.classList.add(this._inactiveButtonClass);
+      this._buttonSubmit.disabled = true;
     }
   };
 
