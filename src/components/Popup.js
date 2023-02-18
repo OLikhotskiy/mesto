@@ -29,12 +29,4 @@ export class Popup {
       }
     });
   }
-
-  handleProcessing(isSending, buttonText) {
-    if (isSending) {
-      this._popup.querySelector(".popup__button").textContent = `${buttonText}`;
-    } else {
-      this._popup.querySelector(".popup__button").textContent = `${buttonText}`;
-    }
-  }
 }

@@ -3,14 +3,10 @@ import { Popup } from "./Popup.js";
 export class PopupWithConfirmation extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
-    this._popup = document.querySelector(popupSelector);
+    this._button = this._popup.querySelector(".popup__button");
   }
 
-  open() {
-    super.open();
-  }
-
-  handleSubmit(submit) {
+  setSubmitHandler(submit) {
     this._handleSubmit = submit;
   }
 
@@ -20,5 +16,9 @@ export class PopupWithConfirmation extends Popup {
       evt.preventDefault();
       this._handleSubmit();
     });
+  }
+
+  setIsLoading(buttonText) {
+    this._button.textContent = `${buttonText}`;
   }
 }

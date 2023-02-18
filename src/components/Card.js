@@ -50,33 +50,35 @@ export class Card {
     this._hangEventListeners();
 
     if (this._card.owner._id !== this._userId) {
-       this._element.querySelector(Card.selectors.trash).classList.add(Card.selectors.trashHide);
-     }
-    this._likesNumber();
-    this.isLiked();
+      this._cardTrash.classList.add(Card.selectors.trashHide);
+    }
+    this._updateLikesCount();
+    this._updateIsLikedState();
     return this._element;
   }
 
   deleteCard = () => {
-    this._element.remove()
-    }
+    this._element.remove();
+    this._element = null;
+  };
 
-  _likesNumber() {
+  _updateLikesCount() {
     this._element.querySelector(Card.selectors.likeNumber).textContent =
       this._likesActive.length;
   }
 
-  addLikes(likesNum) {
+  setLikes(likesNum) {
     this._likesActive = likesNum;
-    this.isLiked();
-    this._likesNumber();
+    this._updateIsLikedState();
+    this._updateLikesCount();
   }
 
-  _deleteLikes() {
+  isLiked() {
     return this._likesActive.some((like) => like._id === this._userId);
   }
-  isLiked() {
-    if (this._deleteLikes()) {
+
+  _updateIsLikedState() {
+    if (this.isLiked()) {
       this._cardLike.classList.add(Card.selectors.likeActive);
       return true;
     } else {
