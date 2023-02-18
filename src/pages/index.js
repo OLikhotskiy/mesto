@@ -121,7 +121,6 @@ function handleProfileFormSubmit(formData) {
   popupEdit.setIsLoading("Сохранение...");
   api
     .setUserInfo(formData)
-    .then((res) => res.json())
     .then((data) => {
       userInfo.setUserInfo(data);
       popupEdit.close();
