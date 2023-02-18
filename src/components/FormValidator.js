@@ -6,6 +6,7 @@ export class FormValidator {
     this._inputErrorClass = configValidation.inputErrorClass;
     this._errorClass = configValidation.errorClass;
     this._form = formElement;
+
     this._inputList = Array.from(
       this._form.querySelectorAll(this._inputSelector)
     );
@@ -14,6 +15,7 @@ export class FormValidator {
 
   _checkInputValidity = (input) => {
     const error = this._form.querySelector(`#${input.id}-error`);
+
     if (input.validity.valid) {
       this._hideError(input, error);
     } else {
