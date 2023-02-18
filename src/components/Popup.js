@@ -32,9 +32,13 @@ export class Popup {
 
   handleProcessing(isSending, buttonText) {
     if (isSending) {
-      this._popup.querySelector(".button_submit").textContent = `${buttonText}`;
+      this._popup.querySelector(
+        ".button__submit"
+      ).textContent = `${buttonText}`;
     } else {
-      this._popup.querySelector(".button_submit").textContent = `${buttonText}`;
+      this._popup.querySelector(
+        ".button__submit"
+      ).textContent = `${buttonText}`;
     }
   }
 }
